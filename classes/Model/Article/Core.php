@@ -8,7 +8,7 @@ class Model_Article_Core extends Model_Article_Article {
   protected $key_article_sorted_by_created = 'article:sorted:by:created';
   protected $key_article_sorted_by_hot = 'article:sorted:by_hot';
 
-  public function get_list_sorted_by_created($start=null, $score=null, $limit=10)
+  public function get_list_sorted_by_created($start=null, $score=null, $limit=3)
   {
     $keys = Kv::instance()->zrscan($this->key($this->key_article_sorted_by_created), $start, $score, null, $limit);
     $list = Kv::instance()->multi_hget($this->key($this->key_article_list), array_keys($keys));
