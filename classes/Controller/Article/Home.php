@@ -45,7 +45,7 @@ class Controller_Article_Home extends Controller_Article_Template {
   {
     $post = Arr::extract($_GET, array('keyword', 'page'));
     $data = $this->model_article->search($post);
-    $view = View::factory($this->tpl_dir.'index');
+    $view = View::factory($this->tpl_dir.'search');
     $view->bind('data', $data);
     $this->template->content = $view;
   }
